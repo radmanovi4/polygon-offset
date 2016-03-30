@@ -224,9 +224,7 @@ Offset.prototype.margin = function(dist) {
 
     union = GreinerHormann.union(vertices, vertices);
     if (union) {
-        union = union[0];
-        // that's the toll
-        vertices = union.slice(0, union.length / 2);
+        vertices = union[0];
     }
 
     vertices = this.ensureLastPoint(vertices);
