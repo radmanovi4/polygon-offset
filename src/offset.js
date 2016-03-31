@@ -188,7 +188,7 @@ Offset.prototype.padding = function(dist) {
 Offset.prototype.margin = function(dist) {
     var offsetEdges = [],
         vertices = [],
-        i, len, union;
+        i, len;
     for (i = 0, len = this.edges.length; i < len; i++) {
         var edge = this.edges[i],
             dx = edge._inNormal.x * dist,
@@ -222,9 +222,9 @@ Offset.prototype.margin = function(dist) {
         }
     }
 
-    union = GreinerHormann.union(vertices, vertices);
-    if (union) {
-        vertices = union[0];
+    var intersect = GreinerHormann.intersection(vertices, vertices);
+    if (intersect) {
+        vertices = intersect[0];
     }
 
     vertices = this.ensureLastPoint(vertices);
